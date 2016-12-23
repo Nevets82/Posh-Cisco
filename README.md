@@ -38,63 +38,63 @@ PS> Install-Module -Name Posh-Cisco
 
 This PowerShell command gets the running configuration and writes it to a file. (only allowed on privilege level 15)
 ```PowerShell
-PS> Backup-CiscoRunningConfig -HostAddress "192.168.0.1" -HostPort 22 -Credential (Get-Credential) -FilePath "$([Environment]::GetFolderPath(“MyDocuments”))\running-config.txt"
+PS> Backup-CiscoRunningConfig -HostAddress "192.168.0.1" -HostPort 22 -Credential (Get-Credential) -AcceptKey -FilePath "$([Environment]::GetFolderPath(“MyDocuments”))\running-config.txt"
 ```
 
 ### Backup Startup Configuration
 
 This PowerShell command gets the startup configuration and writes it to a file.
 ```PowerShell
-PS> Backup-CiscoStartupConfig -HostAddress "192.168.0.1" -HostPort 22 -Credential (Get-Credential) -FilePath "$([Environment]::GetFolderPath(“MyDocuments”))\startup-config.txt"
+PS> Backup-CiscoStartupConfig -HostAddress "192.168.0.1" -HostPort 22 -Credential (Get-Credential) -AcceptKey -FilePath "$([Environment]::GetFolderPath(“MyDocuments”))\startup-config.txt"
 ```
 
 ### Show Interfaces Status
 
 This PowerShell command gets the interfaces status.
 ```PowerShell
-PS> Get-CiscoInterfacesStatus -HostAddress "192.168.0.1" -HostPort 22 -Credential (Get-Credential)
+PS> Get-CiscoInterfacesStatus -HostAddress "192.168.0.1" -HostPort 22 -Credential (Get-Credential) -AcceptKey
 ```
 
 ### Show Logging Information
 
 This PowerShell command gets the logging information.
 ```PowerShell
-PS> Get-CiscoLogging -HostAddress "192.168.0.1" -HostPort 22 -Credential (Get-Credential)
+PS> Get-CiscoLogging -HostAddress "192.168.0.1" -HostPort 22 -Credential (Get-Credential) -AcceptKey
 ```
 
 ### Show Onboard Logging Information
 
 This PowerShell command gets the onboard logging information. 
 ```PowerShell
-PS> Get-CiscoLoggingOnboard -HostAddress "192.168.0.1" -HostPort 22 -Credential (Get-Credential)
+PS> Get-CiscoLoggingOnboard -HostAddress "192.168.0.1" -HostPort 22 -Credential (Get-Credential) -AcceptKey
 ```
 
 ### Show Running Configuration
 
 This PowerShell command gets the running configuration. (only allowed on privilege level 15)
 ```PowerShell
-PS> Get-CiscoRunningConfig -HostAddress "192.168.0.1" -HostPort 22 -Credential (Get-Credential)
+PS> Get-CiscoRunningConfig -HostAddress "192.168.0.1" -HostPort 22 -Credential (Get-Credential) -AcceptKey
 ```
 
 ### Show Startup Configuration
 
 This PowerShell command gets the startup configuration.
 ```PowerShell
-PS> Get-CiscoStartupConfig -HostAddress "192.168.0.1" -HostPort 22 -Credential (Get-Credential)
+PS> Get-CiscoStartupConfig -HostAddress "192.168.0.1" -HostPort 22 -Credential (Get-Credential) -AcceptKey
 ```
 
 ### Show Version Information
 
 This PowerShell command gets the version information.
 ```PowerShell
-PS> Get-CiscoVersion -HostAddress "192.168.0.1" -HostPort 22 -Credential (Get-Credential)
+PS> Get-CiscoVersion -HostAddress "192.168.0.1" -HostPort 22 -Credential (Get-Credential) -AcceptKey
 ```
 
 ### Show VLAN Information
 
 This PowerShell command gets the VLAN information.
 ```PowerShell
-PS> Get-CiscoVlan -HostAddress "192.168.0.1" -HostPort 22 -Credential (Get-Credential)
+PS> Get-CiscoVlan -HostAddress "192.168.0.1" -HostPort 22 -Credential (Get-Credential) -AcceptKey
 ```
 
 ## Security Considerations
@@ -105,6 +105,7 @@ Before you create scripts that use this module, you should create a readonly use
 configure terminal
 user readonly privilege 3 password 0 enterastrongpasswordhere
 privilege exec level 3 show startup-config
+privilege exec level 3 show logging onboard
 ```
 Remark: A readonly user will not be able to read the running-config, this requires privilege level 15.
 
@@ -119,6 +120,12 @@ These PowerShell functions were tested on the following Cisco devices:
 * WS-C3850-24S (SW version: 03.06.05E)
 
 ## Change Log
+
+### Version 1.0.1
+
+#### New Features
+
+* Added -AcceptKey switch to all functions to automatically accept SSH Key
 
 ### Version 1.0.0
 

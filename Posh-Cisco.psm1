@@ -4,6 +4,7 @@ Import-Module Posh-SSH;
 # .ExternalHelp Posh-Cisco.psm1-Help.xml
 function Get-CiscoSSHResponse
 {
+    [OutputType([String])]
     param
     (
 		[Parameter(Mandatory=$true)]
@@ -12,13 +13,15 @@ function Get-CiscoSSHResponse
 		[Int]$HostPort = 22,
 		[Parameter(Mandatory=$true)]
 		[PSCredential]$Credential,
+		[Parameter(Mandatory=$false)]
+		[Switch]$AcceptKey,
 		[Parameter(Mandatory=$true)]
 		[String]$Command,
 		[Parameter(Mandatory=$false)]
 		[String]$StripHeaderAt = $null
     )
 
-    $SSHSession = New-SSHSession -ComputerName $HostAddress -Port $HostPort -Credential $Credential;
+    $SSHSession = New-SSHSession -ComputerName $HostAddress -Port $HostPort -Credential $Credential -AcceptKey:$AcceptKey;
         
     if ($SSHSession.Connected)
     {
@@ -46,6 +49,7 @@ function Get-CiscoSSHResponse
 # .ExternalHelp Posh-Cisco.psm1-Help.xml
 function Get-CiscoStartupConfig
 {
+    [OutputType([String])]
     param
     (
 		[Parameter(Mandatory=$true)]
@@ -53,10 +57,12 @@ function Get-CiscoStartupConfig
 		[Parameter(Mandatory=$false)]
 		[Int]$HostPort = 22,
 		[Parameter(Mandatory=$true)]
-		[PSCredential]$Credential
+		[PSCredential]$Credential,
+		[Parameter(Mandatory=$false)]
+		[Switch]$AcceptKey
     )
 
-    return (Get-CiscoSSHResponse -HostAddress $HostAddress -HostPort $HostPort -Credential $Credential -Command 'show startup-config' -StripHeaderAt '!');
+    return (Get-CiscoSSHResponse -HostAddress $HostAddress -HostPort $HostPort -Credential $Credential -AcceptKey:$AcceptKey -Command 'show startup-config' -StripHeaderAt '!');
 }
 
 # .ExternalHelp Posh-Cisco.psm1-Help.xml
@@ -70,16 +76,19 @@ function Backup-CiscoStartupConfig
 		[Int]$HostPort = 22,
 		[Parameter(Mandatory=$true)]
 		[PSCredential]$Credential,
+		[Parameter(Mandatory=$false)]
+		[Switch]$AcceptKey,
 		[Parameter(Mandatory=$true)]
 		[String]$FilePath
     )
 
-    Get-CiscoStartupConfig -HostAddress $HostAddress -HostPort $HostPort -Credential $Credential | Out-File -FilePath $FilePath;
+    Get-CiscoStartupConfig -HostAddress $HostAddress -HostPort $HostPort -Credential $Credential -AcceptKey:$AcceptKey | Out-File -FilePath $FilePath;
 }
 
 # .ExternalHelp Posh-Cisco.psm1-Help.xml
 function Get-CiscoRunningConfig
 {
+    [OutputType([String])]
     param
     (
 		[Parameter(Mandatory=$true)]
@@ -87,10 +96,12 @@ function Get-CiscoRunningConfig
 		[Parameter(Mandatory=$false)]
 		[Int]$HostPort = 22,
 		[Parameter(Mandatory=$true)]
-		[PSCredential]$Credential
+		[PSCredential]$Credential,
+		[Parameter(Mandatory=$false)]
+		[Switch]$AcceptKey
     )
 
-    return (Get-CiscoSSHResponse -HostAddress $HostAddress -HostPort $HostPort -Credential $Credential -Command 'show running-config' -StripHeaderAt '!');
+    return (Get-CiscoSSHResponse -HostAddress $HostAddress -HostPort $HostPort -Credential $Credential -AcceptKey:$AcceptKey -Command 'show running-config' -StripHeaderAt '!');
 }
 
 # .ExternalHelp Posh-Cisco.psm1-Help.xml
@@ -104,16 +115,19 @@ function Backup-CiscoRunningConfig
 		[Int]$HostPort = 22,
 		[Parameter(Mandatory=$true)]
 		[PSCredential]$Credential,
+		[Parameter(Mandatory=$false)]
+		[Switch]$AcceptKey,
 		[Parameter(Mandatory=$true)]
 		[String]$FilePath
     )
 
-    Get-CiscoRunningConfig -HostAddress $HostAddress -HostPort $HostPort -Credential $Credential | Out-File -FilePath $FilePath;
+    Get-CiscoRunningConfig -HostAddress $HostAddress -HostPort $HostPort -Credential $Credential -AcceptKey:$AcceptKey | Out-File -FilePath $FilePath;
 }
 
 # .ExternalHelp Posh-Cisco.psm1-Help.xml
 function Get-CiscoInterfacesStatus
 {
+    [OutputType([String])]
     param
     (
 		[Parameter(Mandatory=$true)]
@@ -121,15 +135,18 @@ function Get-CiscoInterfacesStatus
 		[Parameter(Mandatory=$false)]
 		[Int]$HostPort = 22,
 		[Parameter(Mandatory=$true)]
-		[PSCredential]$Credential
+		[PSCredential]$Credential,
+		[Parameter(Mandatory=$false)]
+		[Switch]$AcceptKey
     )
     
-    return (Get-CiscoSSHResponse -HostAddress $HostAddress -HostPort $HostPort -Credential $Credential -Command 'show interfaces status' -StripHeaderAt 'Port  ');
+    return (Get-CiscoSSHResponse -HostAddress $HostAddress -HostPort $HostPort -Credential $Credential -AcceptKey:$AcceptKey -Command 'show interfaces status' -StripHeaderAt 'Port  ');
 }
 
 # .ExternalHelp Posh-Cisco.psm1-Help.xml
 function Get-CiscoLogging
 {
+    [OutputType([String])]
     param
     (
 		[Parameter(Mandatory=$true)]
@@ -137,15 +154,18 @@ function Get-CiscoLogging
 		[Parameter(Mandatory=$false)]
 		[Int]$HostPort = 22,
 		[Parameter(Mandatory=$true)]
-		[PSCredential]$Credential
+		[PSCredential]$Credential,
+		[Parameter(Mandatory=$false)]
+		[Switch]$AcceptKey
     )
 
-    return (Get-CiscoSSHResponse -HostAddress $HostAddress -HostPort $HostPort -Credential $Credential -Command 'show logging' -StripHeaderAt 'Syslog ');
+    return (Get-CiscoSSHResponse -HostAddress $HostAddress -HostPort $HostPort -Credential $Credential -AcceptKey:$AcceptKey -Command 'show logging' -StripHeaderAt 'Syslog ');
 }
 
 # .ExternalHelp Posh-Cisco.psm1-Help.xml
 function Get-CiscoLoggingOnboard
 {
+    [OutputType([String])]
     param
     (
 		[Parameter(Mandatory=$true)]
@@ -153,15 +173,18 @@ function Get-CiscoLoggingOnboard
 		[Parameter(Mandatory=$false)]
 		[Int]$HostPort = 22,
 		[Parameter(Mandatory=$true)]
-		[PSCredential]$Credential
+		[PSCredential]$Credential,
+		[Parameter(Mandatory=$false)]
+		[Switch]$AcceptKey
     )
 
-    return (Get-CiscoSSHResponse -HostAddress $HostAddress -HostPort $HostPort -Credential $Credential -Command 'show logging onboard' -StripHeaderAt 'PID: ');
+    return (Get-CiscoSSHResponse -HostAddress $HostAddress -HostPort $HostPort -Credential $Credential -AcceptKey:$AcceptKey -Command 'show logging onboard' -StripHeaderAt 'PID: ');
 }
 
 # .ExternalHelp Posh-Cisco.psm1-Help.xml
 function Get-CiscoVersion
 {
+    [OutputType([String])]
     param
     (
 		[Parameter(Mandatory=$true)]
@@ -169,15 +192,18 @@ function Get-CiscoVersion
 		[Parameter(Mandatory=$false)]
 		[Int]$HostPort = 22,
 		[Parameter(Mandatory=$true)]
-		[PSCredential]$Credential
+		[PSCredential]$Credential,
+		[Parameter(Mandatory=$false)]
+		[Switch]$AcceptKey
     )
 
-    return (Get-CiscoSSHResponse -HostAddress $HostAddress -HostPort $HostPort -Credential $Credential -Command 'show version' -StripHeaderAt 'Cisco IOS Software, ');
+    return (Get-CiscoSSHResponse -HostAddress $HostAddress -HostPort $HostPort -Credential $Credential -AcceptKey:$AcceptKey -Command 'show version' -StripHeaderAt 'Cisco IOS Software, ');
 }
 
 # .ExternalHelp Posh-Cisco.psm1-Help.xml
 function Get-CiscoVlan
 {
+    [OutputType([String])]
     param
     (
 		[Parameter(Mandatory=$true)]
@@ -185,8 +211,10 @@ function Get-CiscoVlan
 		[Parameter(Mandatory=$false)]
 		[Int]$HostPort = 22,
 		[Parameter(Mandatory=$true)]
-		[PSCredential]$Credential
+		[PSCredential]$Credential,
+		[Parameter(Mandatory=$false)]
+		[Switch]$AcceptKey
     )
 
-    return (Get-CiscoSSHResponse -HostAddress $HostAddress -HostPort $HostPort -Credential $Credential -Command 'show vlan' -StripHeaderAt 'VLAN ');
+    return (Get-CiscoSSHResponse -HostAddress $HostAddress -HostPort $HostPort -Credential $Credential -AcceptKey:$AcceptKey -Command 'show vlan' -StripHeaderAt 'VLAN ');
 }
