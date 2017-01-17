@@ -37,6 +37,7 @@ PS> Install-Module -Name Posh-Cisco
 ### Backup Running Configuration
 
 This PowerShell command gets the running configuration and writes it to a file. (only allowed on privilege level 15)
+
 ```PowerShell
 PS> Backup-CiscoRunningConfig -HostAddress "192.168.0.1" -HostPort 22 -Credential (Get-Credential) -AcceptKey -FilePath "$([Environment]::GetFolderPath(“MyDocuments”))\running-config.txt"
 ```
