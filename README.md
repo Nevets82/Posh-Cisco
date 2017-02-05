@@ -1,6 +1,6 @@
 # Posh-Cisco PowerShell Cisco Module
 
-This PowerShell module provides some functionality to facilitate automating backup actions of a Cisco device over SSH. This PowerShell module also provides some basic functionality for troubleshooting Cisco devices.
+This PowerShell module provides some functionality to facilitate automating backup actions of a Cisco device over SSH. This module also provides some basic functionality for troubleshooting Cisco devices.
 
 ## Dependencies
 
@@ -39,72 +39,90 @@ PS> Install-Module -Name Posh-Cisco
 This PowerShell command gets the running configuration and writes it to a file. (only allowed on privilege level 15)
 
 ```PowerShell
-PS> Backup-CiscoRunningConfig -HostAddress "192.168.0.1" -HostPort 22 -Credential (Get-Credential) -AcceptKey -FilePath "$([Environment]::GetFolderPath(“MyDocuments”))\running-config.txt"
+PS> Backup-CiscoRunningConfig -HostAddress "192.168.0.1" -HostPort 22 -Credential (Get-Credential) -FilePath "$([Environment]::GetFolderPath(“MyDocuments”))\running-config.txt"
 ```
+
+Specify the ```-AcceptKey``` flag to automatically accept SSH key.
 
 ### Backup Startup Configuration
 
 This PowerShell command gets the startup configuration and writes it to a file.
 
 ```PowerShell
-PS> Backup-CiscoStartupConfig -HostAddress "192.168.0.1" -HostPort 22 -Credential (Get-Credential) -AcceptKey -FilePath "$([Environment]::GetFolderPath(“MyDocuments”))\startup-config.txt"
+PS> Backup-CiscoStartupConfig -HostAddress "192.168.0.1" -HostPort 22 -Credential (Get-Credential) -FilePath "$([Environment]::GetFolderPath(“MyDocuments”))\startup-config.txt"
 ```
+
+Specify the ```-AcceptKey``` flag to automatically accept SSH key.
 
 ### Show Interfaces Status
 
 This PowerShell command gets the interfaces status.
 
 ```PowerShell
-PS> Get-CiscoInterfacesStatus -HostAddress "192.168.0.1" -HostPort 22 -Credential (Get-Credential) -AcceptKey
+PS> Get-CiscoInterfacesStatus -HostAddress "192.168.0.1" -HostPort 22 -Credential (Get-Credential)
 ```
+
+Specify the ```-AcceptKey``` flag to automatically accept SSH key.
 
 ### Show Logging Information
 
 This PowerShell command gets the logging information.
 
 ```PowerShell
-PS> Get-CiscoLogging -HostAddress "192.168.0.1" -HostPort 22 -Credential (Get-Credential) -AcceptKey
+PS> Get-CiscoLogging -HostAddress "192.168.0.1" -HostPort 22 -Credential (Get-Credential)
 ```
+
+Specify the ```-AcceptKey``` flag to automatically accept SSH key.
 
 ### Show Onboard Logging Information
 
 This PowerShell command gets the onboard logging information. 
 
 ```PowerShell
-PS> Get-CiscoLoggingOnboard -HostAddress "192.168.0.1" -HostPort 22 -Credential (Get-Credential) -AcceptKey
+PS> Get-CiscoLoggingOnboard -HostAddress "192.168.0.1" -HostPort 22 -Credential (Get-Credential)
 ```
+
+Specify the ```-AcceptKey``` flag to automatically accept SSH key.
 
 ### Show Running Configuration
 
 This PowerShell command gets the running configuration. (only allowed on privilege level 15)
 
 ```PowerShell
-PS> Get-CiscoRunningConfig -HostAddress "192.168.0.1" -HostPort 22 -Credential (Get-Credential) -AcceptKey
+PS> Get-CiscoRunningConfig -HostAddress "192.168.0.1" -HostPort 22 -Credential (Get-Credential)
 ```
+
+Specify the ```-AcceptKey``` flag to automatically accept SSH key.
 
 ### Show Startup Configuration
 
 This PowerShell command gets the startup configuration.
 
 ```PowerShell
-PS> Get-CiscoStartupConfig -HostAddress "192.168.0.1" -HostPort 22 -Credential (Get-Credential) -AcceptKey
+PS> Get-CiscoStartupConfig -HostAddress "192.168.0.1" -HostPort 22 -Credential (Get-Credential) 
 ```
+
+Specify the ```-AcceptKey``` flag to automatically accept SSH key.
 
 ### Show Version Information
 
 This PowerShell command gets the version information.
 
 ```PowerShell
-PS> Get-CiscoVersion -HostAddress "192.168.0.1" -HostPort 22 -Credential (Get-Credential) -AcceptKey
+PS> Get-CiscoVersion -HostAddress "192.168.0.1" -HostPort 22 -Credential (Get-Credential)
 ```
+
+Specify the ```-AcceptKey``` flag to automatically accept SSH key.
 
 ### Show VLAN Information
 
 This PowerShell command gets the VLAN information.
 
 ```PowerShell
-PS> Get-CiscoVlan -HostAddress "192.168.0.1" -HostPort 22 -Credential (Get-Credential) -AcceptKey
+PS> Get-CiscoVlan -HostAddress "192.168.0.1" -HostPort 22 -Credential (Get-Credential)
 ```
+
+Specify the ```-AcceptKey``` flag to automatically accept SSH key.
 
 ## Security Considerations
 
