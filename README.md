@@ -2,6 +2,12 @@
 
 This PowerShell module provides some functionality to facilitate automating backup actions of a Cisco device over SSH. This module also provides some basic functionality for troubleshooting Cisco devices.
 
+## Similar Projects
+
+Here are some similar projects I wrote:
+
+* [Posh-Fortigate (PowerShell Fortigate Module)](https://www.powershellgallery.com/packages/Posh-Fortigate "Posh-Fortigate PowerShell Fortigate Module")
+
 ## Dependencies
 
 This module depends on the following PowerShell modules:
@@ -42,7 +48,9 @@ This PowerShell command gets the running configuration and writes it to a file. 
 PS> Backup-CiscoRunningConfig -HostAddress "192.168.0.1" -HostPort 22 -Credential (Get-Credential) -FilePath "$([Environment]::GetFolderPath(“MyDocuments”))\running-config.txt"
 ```
 
-Specify the ```-AcceptKey``` flag to automatically accept SSH key.
+Advanced Options:
+
+* Specify the ```-AcceptKey``` flag to automatically accept SSH key.
 
 ### Backup Startup Configuration
 
@@ -52,7 +60,9 @@ This PowerShell command gets the startup configuration and writes it to a file.
 PS> Backup-CiscoStartupConfig -HostAddress "192.168.0.1" -HostPort 22 -Credential (Get-Credential) -FilePath "$([Environment]::GetFolderPath(“MyDocuments”))\startup-config.txt"
 ```
 
-Specify the ```-AcceptKey``` flag to automatically accept SSH key.
+Advanced Options:
+
+* Specify the ```-AcceptKey``` flag to automatically accept SSH key.
 
 ### Show Interfaces Status
 
@@ -62,7 +72,9 @@ This PowerShell command gets the interfaces status.
 PS> Get-CiscoInterfacesStatus -HostAddress "192.168.0.1" -HostPort 22 -Credential (Get-Credential)
 ```
 
-Specify the ```-AcceptKey``` flag to automatically accept SSH key.
+Advanced Options:
+
+* Specify the ```-AcceptKey``` flag to automatically accept SSH key.
 
 ### Show Logging Information
 
@@ -72,7 +84,9 @@ This PowerShell command gets the logging information.
 PS> Get-CiscoLogging -HostAddress "192.168.0.1" -HostPort 22 -Credential (Get-Credential)
 ```
 
-Specify the ```-AcceptKey``` flag to automatically accept SSH key.
+Advanced Options:
+
+* Specify the ```-AcceptKey``` flag to automatically accept SSH key.
 
 ### Show Onboard Logging Information
 
@@ -82,7 +96,9 @@ This PowerShell command gets the onboard logging information.
 PS> Get-CiscoLoggingOnboard -HostAddress "192.168.0.1" -HostPort 22 -Credential (Get-Credential)
 ```
 
-Specify the ```-AcceptKey``` flag to automatically accept SSH key.
+Advanced Options:
+
+* Specify the ```-AcceptKey``` flag to automatically accept SSH key.
 
 ### Show Running Configuration
 
@@ -92,7 +108,9 @@ This PowerShell command gets the running configuration. (only allowed on privile
 PS> Get-CiscoRunningConfig -HostAddress "192.168.0.1" -HostPort 22 -Credential (Get-Credential)
 ```
 
-Specify the ```-AcceptKey``` flag to automatically accept SSH key.
+Advanced Options:
+
+* Specify the ```-AcceptKey``` flag to automatically accept SSH key.
 
 ### Show Startup Configuration
 
@@ -102,7 +120,9 @@ This PowerShell command gets the startup configuration.
 PS> Get-CiscoStartupConfig -HostAddress "192.168.0.1" -HostPort 22 -Credential (Get-Credential) 
 ```
 
-Specify the ```-AcceptKey``` flag to automatically accept SSH key.
+Advanced Options:
+
+* Specify the ```-AcceptKey``` flag to automatically accept SSH key.
 
 ### Show Version Information
 
@@ -112,7 +132,9 @@ This PowerShell command gets the version information.
 PS> Get-CiscoVersion -HostAddress "192.168.0.1" -HostPort 22 -Credential (Get-Credential)
 ```
 
-Specify the ```-AcceptKey``` flag to automatically accept SSH key.
+Advanced Options:
+
+* Specify the ```-AcceptKey``` flag to automatically accept SSH key.
 
 ### Show VLAN Information
 
@@ -122,7 +144,9 @@ This PowerShell command gets the VLAN information.
 PS> Get-CiscoVlan -HostAddress "192.168.0.1" -HostPort 22 -Credential (Get-Credential)
 ```
 
-Specify the ```-AcceptKey``` flag to automatically accept SSH key.
+Advanced Options:
+
+* Specify the ```-AcceptKey``` flag to automatically accept SSH key.
 
 ## Security Considerations
 
