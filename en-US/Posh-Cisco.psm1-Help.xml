@@ -136,7 +136,7 @@
 				<maml:introduction>
 					<maml:para>PS C:\&gt;</maml:para>
 				</maml:introduction>
-				<dev:code>Backup-CiscoRunningConfig -HostAddress &quot;192.168.0.1&quot; -Credential (Get-Credential) -FilePath &quot;$([Environment]::GetFolderPath(“MyDocuments”))\running-config.txt&quot;</dev:code>
+				<dev:code>Backup-CiscoRunningConfig -HostAddress &quot;192.168.1.1&quot; -Credential (Get-Credential) -FilePath &quot;$([Environment]::GetFolderPath(“MyDocuments”))\running-config.txt&quot;</dev:code>
 				<dev:remarks>
 					<maml:para>
 					</maml:para>
@@ -147,7 +147,7 @@
 				<maml:introduction>
 					<maml:para>PS C:\&gt;</maml:para>
 				</maml:introduction>
-				<dev:code>Backup-CiscoRunningConfig -HostAddress &quot;192.168.0.1&quot; -HostPort 22 -Credential (Get-Credential) -AcceptKey -FilePath &quot;$([Environment]::GetFolderPath(“MyDocuments”))\running-config.txt&quot;</dev:code>
+				<dev:code>Backup-CiscoRunningConfig -HostAddress &quot;192.168.1.1&quot; -HostPort 22 -Credential (Get-Credential) -AcceptKey -FilePath &quot;$([Environment]::GetFolderPath(“MyDocuments”))\running-config.txt&quot;</dev:code>
 				<dev:remarks>
 					<maml:para>
 					</maml:para>
@@ -284,7 +284,7 @@
 				<maml:introduction>
 					<maml:para>PS C:\&gt;</maml:para>
 				</maml:introduction>
-				<dev:code>Backup-CiscoStartupConfig -HostAddress &quot;192.168.0.1&quot; -Credential (Get-Credential) -FilePath &quot;$([Environment]::GetFolderPath(“MyDocuments”))\startup-config.txt&quot;</dev:code>
+				<dev:code>Backup-CiscoStartupConfig -HostAddress &quot;192.168.1.1&quot; -Credential (Get-Credential) -FilePath &quot;$([Environment]::GetFolderPath(“MyDocuments”))\startup-config.txt&quot;</dev:code>
 				<dev:remarks>
 					<maml:para>
 					</maml:para>
@@ -295,7 +295,148 @@
 				<maml:introduction>
 					<maml:para>PS C:\&gt;</maml:para>
 				</maml:introduction>
-				<dev:code>Backup-CiscoStartupConfig -HostAddress &quot;192.168.0.1&quot; -HostPort 22 -Credential (Get-Credential) -AcceptKey -FilePath &quot;$([Environment]::GetFolderPath(“MyDocuments”))\startup-config.txt&quot;</dev:code>
+				<dev:code>Backup-CiscoStartupConfig -HostAddress &quot;192.168.1.1&quot; -HostPort 22 -Credential (Get-Credential) -AcceptKey -FilePath &quot;$([Environment]::GetFolderPath(“MyDocuments”))\startup-config.txt&quot;</dev:code>
+				<dev:remarks>
+					<maml:para>
+					</maml:para>
+				</dev:remarks>
+			</command:example>
+		</command:examples>
+	</command:command>
+	<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+		<!-- Command-->
+		<command:details>
+			<command:name>Get-CiscoInterfaces</command:name>
+			<maml:description>
+				<maml:para>Gets the Cisco device interfaces information.</maml:para>
+			</maml:description>
+			<maml:copyright>
+				<maml:para/>
+			</maml:copyright>
+			<command:verb>Get</command:verb>
+			<command:noun>CiscoInterfaces</command:noun>
+			<dev:version/>
+		</command:details>
+		<maml:description>
+			<maml:para>Gets the Cisco device interfaces information.</maml:para>
+		</maml:description>
+		<command:syntax>
+			<!-- Parameter Sets-->
+			<command:syntaxItem>
+				<maml:name>Get-CiscoInterfaces</maml:name>
+				<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
+					<maml:name>HostAddress</maml:name>
+					<maml:description>
+						<maml:para>The SSH host address of the Cisco device.</maml:para>
+					</maml:description>
+					<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+				</command:parameter>
+				<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="1">
+					<maml:name>HostPort</maml:name>
+					<maml:description>
+						<maml:para>The SSH host port of the Cisco device.</maml:para>
+					</maml:description>
+					<command:parameterValue required="false" variableLength="false">Int32</command:parameterValue>
+				</command:parameter>
+				<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="2">
+					<maml:name>Credential</maml:name>
+					<maml:description>
+						<maml:para>The SSH credentials to use.</maml:para>
+					</maml:description>
+					<command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+				</command:parameter>
+				<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
+					<maml:name>AcceptKey</maml:name>
+					<maml:description>
+						<maml:para>Automatically accept SSH key.</maml:para>
+					</maml:description>
+					<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+					<dev:defaultValue/>
+				</command:parameter>
+			</command:syntaxItem>
+		</command:syntax>
+		<command:parameters>
+			<!-- All Parameters-->
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
+				<maml:name>HostAddress</maml:name>
+				<maml:description>
+					<maml:para>The SSH host address of the Cisco device.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+				<dev:type>
+					<maml:name>String</maml:name>
+					<maml:uri/>
+				</dev:type>
+				<dev:defaultValue/>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="1">
+				<maml:name>HostPort</maml:name>
+				<maml:description>
+					<maml:para>The SSH host port of the Cisco device.</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">Int32</command:parameterValue>
+				<dev:type>
+					<maml:name>Int32</maml:name>
+					<maml:uri/>
+				</dev:type>
+				<dev:defaultValue/>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="2">
+				<maml:name>Credential</maml:name>
+				<maml:description>
+					<maml:para>The SSH credentials to use.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+				<dev:type>
+					<maml:name>PSCredential</maml:name>
+					<maml:uri/>
+				</dev:type>
+				<dev:defaultValue/>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
+				<maml:name>AcceptKey</maml:name>
+				<maml:description>
+					<maml:para>Automatically accept SSH key.</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+				<dev:type>
+					<maml:name>SwitchParameter</maml:name>
+					<maml:uri/>
+				</dev:type>
+				<dev:defaultValue/>
+			</command:parameter>
+		</command:parameters>
+		<command:returnValues>
+			<!-- Outputs-->
+			<command:returnValue>
+				<dev:type>
+					<maml:name>System.String</maml:name>
+					<maml:uri/>
+				</dev:type>
+				<maml:description>
+					<maml:para/>
+				</maml:description>
+			</command:returnValue>
+		</command:returnValues>
+		<command:examples>
+			<!-- Examples-->
+			<command:example>
+				<maml:title>-------------------------- EXAMPLE 1 --------------------------</maml:title>
+				<maml:introduction>
+					<maml:para>PS C:\&gt;</maml:para>
+				</maml:introduction>
+				<dev:code>Get-CiscoInterfaces -HostAddress &quot;192.168.1.1&quot; -Credential (Get-Credential)</dev:code>
+				<dev:remarks>
+					<maml:para>
+					</maml:para>
+				</dev:remarks>
+			</command:example>
+			<command:example>
+				<maml:title>-------------------------- EXAMPLE 2 --------------------------</maml:title>
+				<maml:introduction>
+					<maml:para>PS C:\&gt;</maml:para>
+				</maml:introduction>
+				<dev:code>Get-CiscoInterfaces -HostAddress &quot;192.168.1.1&quot; -HostPort 22 -Credential (Get-Credential) -AcceptKey</dev:code>
 				<dev:remarks>
 					<maml:para>
 					</maml:para>
@@ -425,7 +566,7 @@
 				<maml:introduction>
 					<maml:para>PS C:\&gt;</maml:para>
 				</maml:introduction>
-				<dev:code>Get-CiscoInterfacesStatus -HostAddress &quot;192.168.0.1&quot; -Credential (Get-Credential)</dev:code>
+				<dev:code>Get-CiscoInterfacesStatus -HostAddress &quot;192.168.1.1&quot; -Credential (Get-Credential)</dev:code>
 				<dev:remarks>
 					<maml:para>
 					</maml:para>
@@ -436,7 +577,7 @@
 				<maml:introduction>
 					<maml:para>PS C:\&gt;</maml:para>
 				</maml:introduction>
-				<dev:code>Get-CiscoInterfacesStatus -HostAddress &quot;192.168.0.1&quot; -HostPort 22 -Credential (Get-Credential) -AcceptKey</dev:code>
+				<dev:code>Get-CiscoInterfacesStatus -HostAddress &quot;192.168.1.1&quot; -HostPort 22 -Credential (Get-Credential) -AcceptKey</dev:code>
 				<dev:remarks>
 					<maml:para>
 					</maml:para>
@@ -566,7 +707,7 @@
 				<maml:introduction>
 					<maml:para>PS C:\&gt;</maml:para>
 				</maml:introduction>
-				<dev:code>Get-CiscoLogging -HostAddress &quot;192.168.0.1&quot; -Credential (Get-Credential)</dev:code>
+				<dev:code>Get-CiscoLogging -HostAddress &quot;192.168.1.1&quot; -Credential (Get-Credential)</dev:code>
 				<dev:remarks>
 					<maml:para>
 					</maml:para>
@@ -577,7 +718,7 @@
 				<maml:introduction>
 					<maml:para>PS C:\&gt;</maml:para>
 				</maml:introduction>
-				<dev:code>Get-CiscoLogging -HostAddress &quot;192.168.0.1&quot; -HostPort 22 -Credential (Get-Credential) -AcceptKey</dev:code>
+				<dev:code>Get-CiscoLogging -HostAddress &quot;192.168.1.1&quot; -HostPort 22 -Credential (Get-Credential) -AcceptKey</dev:code>
 				<dev:remarks>
 					<maml:para>
 					</maml:para>
@@ -707,7 +848,7 @@
 				<maml:introduction>
 					<maml:para>PS C:\&gt;</maml:para>
 				</maml:introduction>
-				<dev:code>Get-CiscoLoggingOnboard -HostAddress &quot;192.168.0.1&quot; -Credential (Get-Credential)</dev:code>
+				<dev:code>Get-CiscoLoggingOnboard -HostAddress &quot;192.168.1.1&quot; -Credential (Get-Credential)</dev:code>
 				<dev:remarks>
 					<maml:para>
 					</maml:para>
@@ -718,7 +859,7 @@
 				<maml:introduction>
 					<maml:para>PS C:\&gt;</maml:para>
 				</maml:introduction>
-				<dev:code>Get-CiscoLoggingOnboard -HostAddress &quot;192.168.0.1&quot; -HostPort 22 -Credential (Get-Credential) -AcceptKey</dev:code>
+				<dev:code>Get-CiscoLoggingOnboard -HostAddress &quot;192.168.1.1&quot; -HostPort 22 -Credential (Get-Credential) -AcceptKey</dev:code>
 				<dev:remarks>
 					<maml:para>
 					</maml:para>
@@ -848,7 +989,7 @@
 				<maml:introduction>
 					<maml:para>PS C:\&gt;</maml:para>
 				</maml:introduction>
-				<dev:code>Get-CiscoRunningConfig -HostAddress &quot;192.168.0.1&quot; -Credential (Get-Credential)</dev:code>
+				<dev:code>Get-CiscoRunningConfig -HostAddress &quot;192.168.1.1&quot; -Credential (Get-Credential)</dev:code>
 				<dev:remarks>
 					<maml:para>
 					</maml:para>
@@ -859,7 +1000,7 @@
 				<maml:introduction>
 					<maml:para>PS C:\&gt;</maml:para>
 				</maml:introduction>
-				<dev:code>Get-CiscoRunningConfig -HostAddress &quot;192.168.0.1&quot; -HostPort 22 -Credential (Get-Credential) -AcceptKey</dev:code>
+				<dev:code>Get-CiscoRunningConfig -HostAddress &quot;192.168.1.1&quot; -HostPort 22 -Credential (Get-Credential) -AcceptKey</dev:code>
 				<dev:remarks>
 					<maml:para>
 					</maml:para>
@@ -1143,7 +1284,7 @@
 				<maml:introduction>
 					<maml:para>PS C:\&gt;</maml:para>
 				</maml:introduction>
-				<dev:code>Get-CiscoStartupConfig -HostAddress &quot;192.168.0.1&quot; -Credential (Get-Credential)</dev:code>
+				<dev:code>Get-CiscoStartupConfig -HostAddress &quot;192.168.1.1&quot; -Credential (Get-Credential)</dev:code>
 				<dev:remarks>
 					<maml:para>
 					</maml:para>
@@ -1154,7 +1295,148 @@
 				<maml:introduction>
 					<maml:para>PS C:\&gt;</maml:para>
 				</maml:introduction>
-				<dev:code>Get-CiscoStartupConfig -HostAddress &quot;192.168.0.1&quot; -HostPort 22 -Credential (Get-Credential) -AcceptKey</dev:code>
+				<dev:code>Get-CiscoStartupConfig -HostAddress &quot;192.168.1.1&quot; -HostPort 22 -Credential (Get-Credential) -AcceptKey</dev:code>
+				<dev:remarks>
+					<maml:para>
+					</maml:para>
+				</dev:remarks>
+			</command:example>
+		</command:examples>
+	</command:command>
+	<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+		<!-- Command-->
+		<command:details>
+			<command:name>Get-CiscoMacAddressTable</command:name>
+			<maml:description>
+				<maml:para>Gets the Cisco device MAC address table.</maml:para>
+			</maml:description>
+			<maml:copyright>
+				<maml:para/>
+			</maml:copyright>
+			<command:verb>Get</command:verb>
+			<command:noun>CiscoMacAddressTable</command:noun>
+			<dev:version/>
+		</command:details>
+		<maml:description>
+			<maml:para>Gets the Cisco device MAC address table.</maml:para>
+		</maml:description>
+		<command:syntax>
+			<!-- Parameter Sets-->
+			<command:syntaxItem>
+				<maml:name>Get-CiscoMacAddressTable</maml:name>
+				<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
+					<maml:name>HostAddress</maml:name>
+					<maml:description>
+						<maml:para>The SSH host address of the Cisco device.</maml:para>
+					</maml:description>
+					<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+				</command:parameter>
+				<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="1">
+					<maml:name>HostPort</maml:name>
+					<maml:description>
+						<maml:para>The SSH host port of the Cisco device.</maml:para>
+					</maml:description>
+					<command:parameterValue required="false" variableLength="false">Int32</command:parameterValue>
+				</command:parameter>
+				<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="2">
+					<maml:name>Credential</maml:name>
+					<maml:description>
+						<maml:para>The SSH credentials to use.</maml:para>
+					</maml:description>
+					<command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+				</command:parameter>
+				<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
+					<maml:name>AcceptKey</maml:name>
+					<maml:description>
+						<maml:para>Automatically accept SSH key.</maml:para>
+					</maml:description>
+					<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+					<dev:defaultValue/>
+				</command:parameter>
+			</command:syntaxItem>
+		</command:syntax>
+		<command:parameters>
+			<!-- All Parameters-->
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
+				<maml:name>HostAddress</maml:name>
+				<maml:description>
+					<maml:para>The SSH host address of the Cisco device.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+				<dev:type>
+					<maml:name>String</maml:name>
+					<maml:uri/>
+				</dev:type>
+				<dev:defaultValue/>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="1">
+				<maml:name>HostPort</maml:name>
+				<maml:description>
+					<maml:para>The SSH host port of the Cisco device.</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">Int32</command:parameterValue>
+				<dev:type>
+					<maml:name>Int32</maml:name>
+					<maml:uri/>
+				</dev:type>
+				<dev:defaultValue/>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="2">
+				<maml:name>Credential</maml:name>
+				<maml:description>
+					<maml:para>The SSH credentials to use.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+				<dev:type>
+					<maml:name>PSCredential</maml:name>
+					<maml:uri/>
+				</dev:type>
+				<dev:defaultValue/>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
+				<maml:name>AcceptKey</maml:name>
+				<maml:description>
+					<maml:para>Automatically accept SSH key.</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+				<dev:type>
+					<maml:name>SwitchParameter</maml:name>
+					<maml:uri/>
+				</dev:type>
+				<dev:defaultValue/>
+			</command:parameter>
+		</command:parameters>
+		<command:returnValues>
+			<!-- Outputs-->
+			<command:returnValue>
+				<dev:type>
+					<maml:name>System.String</maml:name>
+					<maml:uri/>
+				</dev:type>
+				<maml:description>
+					<maml:para/>
+				</maml:description>
+			</command:returnValue>
+		</command:returnValues>
+		<command:examples>
+			<!-- Examples-->
+			<command:example>
+				<maml:title>-------------------------- EXAMPLE 1 --------------------------</maml:title>
+				<maml:introduction>
+					<maml:para>PS C:\&gt;</maml:para>
+				</maml:introduction>
+				<dev:code>Get-CiscoMacAddressTable -HostAddress &quot;192.168.1.1&quot; -Credential (Get-Credential)</dev:code>
+				<dev:remarks>
+					<maml:para>
+					</maml:para>
+				</dev:remarks>
+			</command:example>
+			<command:example>
+				<maml:title>-------------------------- EXAMPLE 2 --------------------------</maml:title>
+				<maml:introduction>
+					<maml:para>PS C:\&gt;</maml:para>
+				</maml:introduction>
+				<dev:code>Get-CiscoMacAddressTable -HostAddress &quot;192.168.1.1&quot; -HostPort 22 -Credential (Get-Credential) -AcceptKey</dev:code>
 				<dev:remarks>
 					<maml:para>
 					</maml:para>
@@ -1284,7 +1566,7 @@
 				<maml:introduction>
 					<maml:para>PS C:\&gt;</maml:para>
 				</maml:introduction>
-				<dev:code>Get-CiscoVersion -HostAddress &quot;192.168.0.1&quot; -Credential (Get-Credential)</dev:code>
+				<dev:code>Get-CiscoVersion -HostAddress &quot;192.168.1.1&quot; -Credential (Get-Credential)</dev:code>
 				<dev:remarks>
 					<maml:para>
 					</maml:para>
@@ -1295,7 +1577,7 @@
 				<maml:introduction>
 					<maml:para>PS C:\&gt;</maml:para>
 				</maml:introduction>
-				<dev:code>Get-CiscoVersion -HostAddress &quot;192.168.0.1&quot; -HostPort 22 -Credential (Get-Credential) -AcceptKey</dev:code>
+				<dev:code>Get-CiscoVersion -HostAddress &quot;192.168.1.1&quot; -HostPort 22 -Credential (Get-Credential) -AcceptKey</dev:code>
 				<dev:remarks>
 					<maml:para>
 					</maml:para>
@@ -1425,7 +1707,7 @@
 				<maml:introduction>
 					<maml:para>PS C:\&gt;</maml:para>
 				</maml:introduction>
-				<dev:code>Get-CiscoVlan -HostAddress &quot;192.168.0.1&quot; -Credential (Get-Credential)</dev:code>
+				<dev:code>Get-CiscoVlan -HostAddress &quot;192.168.1.1&quot; -Credential (Get-Credential)</dev:code>
 				<dev:remarks>
 					<maml:para>
 					</maml:para>
@@ -1436,7 +1718,7 @@
 				<maml:introduction>
 					<maml:para>PS C:\&gt;</maml:para>
 				</maml:introduction>
-				<dev:code>Get-CiscoVlan -HostAddress &quot;192.168.0.1&quot; -HostPort 22 -Credential (Get-Credential) -AcceptKey</dev:code>
+				<dev:code>Get-CiscoVlan -HostAddress &quot;192.168.1.1&quot; -HostPort 22 -Credential (Get-Credential) -AcceptKey</dev:code>
 				<dev:remarks>
 					<maml:para>
 					</maml:para>

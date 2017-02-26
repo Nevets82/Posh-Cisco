@@ -54,7 +54,7 @@ function Get-CiscoSSHResponse
             $StartIndex = $Result.IndexOf("`n$StripHeaderAt") + 1;
         }
 
-        return $Result.Substring($StartIndex).Trim();
+        return $Result.Substring($StartIndex).Replace("`r`n","`n").Trim();
     }
     else
     {
@@ -98,7 +98,7 @@ function Backup-CiscoStartupConfig
 		[String]$FilePath
     )
 
-    Get-CiscoStartupConfig -HostAddress $HostAddress -HostPort $HostPort -Credential $Credential -AcceptKey:$AcceptKey | Out-File -FilePath $FilePath;
+    Get-CiscoStartupConfig -HostAddress $HostAddress -HostPort $HostPort -Credential $Credential -AcceptKey:$AcceptKey | Out-File -FilePath $FilePath -Encoding ascii;
 }
 
 # .ExternalHelp Posh-Cisco.psm1-Help.xml
@@ -114,10 +114,19 @@ function Get-CiscoRunningConfig
 		[Parameter(Mandatory=$true)]
 		[PSCredential]$Credential,
 		[Parameter(Mandatory=$false)]
+		[Switch]$Full,
+		[Parameter(Mandatory=$false)]
 		[Switch]$AcceptKey
     )
 
-    return (Get-CiscoSSHResponse -HostAddress $HostAddress -HostPort $HostPort -Credential $Credential -AcceptKey:$AcceptKey -Command 'show running-config' -StripHeaderAt '!');
+    $Command = 'show running-config';
+
+    if ($Full)
+    {
+        $Command = "$Command full";
+    }
+
+    return (Get-CiscoSSHResponse -HostAddress $HostAddress -HostPort $HostPort -Credential $Credential -AcceptKey:$AcceptKey -Command $Command -StripHeaderAt '!');
 }
 
 # .ExternalHelp Posh-Cisco.psm1-Help.xml
@@ -132,12 +141,33 @@ function Backup-CiscoRunningConfig
 		[Parameter(Mandatory=$true)]
 		[PSCredential]$Credential,
 		[Parameter(Mandatory=$false)]
+		[Switch]$Full,
+		[Parameter(Mandatory=$false)]
 		[Switch]$AcceptKey,
 		[Parameter(Mandatory=$true)]
 		[String]$FilePath
     )
 
-    Get-CiscoRunningConfig -HostAddress $HostAddress -HostPort $HostPort -Credential $Credential -AcceptKey:$AcceptKey | Out-File -FilePath $FilePath;
+    Get-CiscoRunningConfig -HostAddress $HostAddress -HostPort $HostPort -Credential $Credential -Full:$Full -AcceptKey:$AcceptKey | Out-File -FilePath $FilePath -Encoding ascii;
+}
+
+# .ExternalHelp Posh-Cisco.psm1-Help.xml
+function Get-CiscoInterfaces
+{
+    [OutputType([String])]
+    param
+    (
+		[Parameter(Mandatory=$true)]
+		[String]$HostAddress,
+		[Parameter(Mandatory=$false)]
+		[Int]$HostPort = 22,
+		[Parameter(Mandatory=$true)]
+		[PSCredential]$Credential,
+		[Parameter(Mandatory=$false)]
+		[Switch]$AcceptKey
+    )
+    
+    return (Get-CiscoSSHResponse -HostAddress $HostAddress -HostPort $HostPort -Credential $Credential -AcceptKey:$AcceptKey -Command 'show interfaces' -StripHeaderAt 'Vlan');
 }
 
 # .ExternalHelp Posh-Cisco.psm1-Help.xml
@@ -195,6 +225,25 @@ function Get-CiscoLoggingOnboard
     )
 
     return (Get-CiscoSSHResponse -HostAddress $HostAddress -HostPort $HostPort -Credential $Credential -AcceptKey:$AcceptKey -Command 'show logging onboard' -StripHeaderAt 'PID: ');
+}
+
+# .ExternalHelp Posh-Cisco.psm1-Help.xml
+function Get-CiscoMacAddressTable
+{
+    [OutputType([String])]
+    param
+    (
+		[Parameter(Mandatory=$true)]
+		[String]$HostAddress,
+		[Parameter(Mandatory=$false)]
+		[Int]$HostPort = 22,
+		[Parameter(Mandatory=$true)]
+		[PSCredential]$Credential,
+		[Parameter(Mandatory=$false)]
+		[Switch]$AcceptKey
+    )
+
+    return (Get-CiscoSSHResponse -HostAddress $HostAddress -HostPort $HostPort -Credential $Credential -AcceptKey:$AcceptKey -Command 'show mac address-table' -StripHeaderAt 'Vlan ');
 }
 
 # .ExternalHelp Posh-Cisco.psm1-Help.xml
