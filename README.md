@@ -178,6 +178,32 @@ Advanced Options:
 
 * Specify the ```-AcceptKey``` flag to automatically accept SSH key.
 
+### Get Bridge-Domain Information
+
+This PowerShell command gets the Bridge-Domain information.
+
+```PowerShell
+PS> Get-CiscoBridgeDomain -HostAddress "192.168.1.1" -HostPort 22 -Credential (Get-Credential)
+```
+
+Advanced Options:
+
+* Specify the ```-AcceptKey``` flag to automatically accept SSH key.
+* Specify the ```-BridgeDomain <ID>``` parameter to only return information about a specific bridge domain.
+
+### Get ARP table Information
+
+This PowerShell command gets the ARP table information.
+
+```PowerShell
+PS> Get-CiscoArp -HostAddress "192.168.1.1" -HostPort 22 -Credential (Get-Credential)
+```
+
+Advanced Options:
+
+* Specify the ```-AcceptKey``` flag to automatically accept SSH key.
+* Specify the ```-vrf <VRF name>``` parameter to return ARP table of a specific bridge VRF.
+
 ## Security Considerations
 
 Before you create scripts that use this module, you should create a readonly user with the necessary rights to be used for the PSCredentials.

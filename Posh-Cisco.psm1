@@ -283,3 +283,63 @@ function Get-CiscoVlan
 
     return (Get-CiscoSSHResponse -HostAddress $HostAddress -HostPort $HostPort -Credential $Credential -AcceptKey:$AcceptKey -Command 'show vlan' -StripHeaderAt 'VLAN ');
 }
+
+function Get-CiscoBridgeDomain
+{
+    [OutputType([String])]
+    param
+    (
+		[Parameter(Mandatory=$true)]
+		[String]$HostAddress,
+		[Parameter(Mandatory=$false)]
+		[Int]$HostPort = 22,
+		[Parameter(Mandatory=$true)]
+		[PSCredential]$Credential,
+		[Parameter(Mandatory=$false)]
+		[Switch]$AcceptKey,
+		[Parameter(Mandatory=$false)]
+		[Int]$BridgeDomain
+		
+    )
+
+	# Base command if no optional parameters present
+	$command = 'show bridge-domain'
+	
+	# Add specific bridge-domain id if present
+	if ($PSBoundParameters.ContainsKey('BridgeDomain'))
+	{
+		$command += " $BridgeDomain"
+	}
+	
+    return (Get-CiscoSSHResponse -HostAddress $HostAddress -HostPort $HostPort -Credential $Credential -AcceptKey:$AcceptKey -Command $command -StripHeaderAt 'Bridge-domain ');
+}
+
+function Get-CiscoArp
+{
+    [OutputType([String])]
+    param
+    (
+		[Parameter(Mandatory=$true)]
+		[String]$HostAddress,
+		[Parameter(Mandatory=$false)]
+		[Int]$HostPort = 22,
+		[Parameter(Mandatory=$true)]
+		[PSCredential]$Credential,
+		[Parameter(Mandatory=$false)]
+		[Switch]$AcceptKey,
+		[Parameter(Mandatory=$false)]
+		[String]$vrf
+		
+    )
+
+	# Base command if no optional parameters present
+	$command = 'show ip arp'
+	
+	# Add specific VRF if present
+	if ($PSBoundParameters.ContainsKey('vrf'))
+	{
+		$command += " vrf $vrf"
+	}
+	
+    return (Get-CiscoSSHResponse -HostAddress $HostAddress -HostPort $HostPort -Credential $Credential -AcceptKey:$AcceptKey -Command $command -StripHeaderAt 'Protocol ');
+}
