@@ -254,7 +254,7 @@ These PowerShell functions were tested on the following Cisco devices:
 * Added support to get bridge domain information (Get-CiscoBridgeDomain)
 * Added support to get ARP table. (Get-CiscoArp)
 * Added support to get IP ARP table. (Get-CiscoIpArp)
-* 
+
 #### Bug Fixes
 
 * Fixed issue with memory leak with lots of sessions
