@@ -43,7 +43,7 @@ function Get-CiscoSSHResponse
     {
         $SSHResponse = Invoke-SSHCommand -SSHSession $SSHSession -Command $Command;
     
-        Remove-SSHSession -SSHSession $SSHSession -OutVariable $SSHSessionRemoveResult;
+        $SSHSessionRemoveResult = Remove-SSHSession -SSHSession $SSHSession;
 
         if (-Not $SSHSessionRemoveResult)
         {
@@ -66,7 +66,7 @@ function Get-CiscoSSHResponse
         throw [System.InvalidOperationException]"Could not connect to SSH host: $($HostAddress):$HostPort.";
     }
     
-    Remove-SSHSession -SSHSession $SSHSession -OutVariable $SSHSessionRemoveResult;
+    $SSHSessionRemoveResult = Remove-SSHSession -SSHSession $SSHSession;
 
     if (-Not $SSHSessionRemoveResult)
     {
