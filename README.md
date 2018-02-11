@@ -204,6 +204,12 @@ These PowerShell functions were tested on the following Cisco devices:
 
 ## Change Log
 
+### Version 1.0.3
+
+#### Bug Fixes
+
+* Fixed issue with memory leak with lots of sessions
+
 ### Version 1.0.2
 
 #### New Features

@@ -43,7 +43,12 @@ function Get-CiscoSSHResponse
     {
         $SSHResponse = Invoke-SSHCommand -SSHSession $SSHSession -Command $Command;
     
-        Remove-SSHSession -SSHSession $SSHSession | Out-Null;
+        Remove-SSHSession -SSHSession $SSHSession -OutVariable $SSHSessionRemoveResult;
+
+        if (-Not $SSHSessionRemoveResult)
+        {
+            Write-Error "Could not remove SSH Session $($SSHSession.SessionId):$($SSHSession.Host).";
+        }
 
         $Result = $SSHResponse.Output | Out-String;
 
@@ -61,8 +66,12 @@ function Get-CiscoSSHResponse
         throw [System.InvalidOperationException]"Could not connect to SSH host: $($HostAddress):$HostPort.";
     }
     
-    Remove-SSHSession -OutVariable SSHSessionRemoveResult
-    if (-not $SSHSessionRemoveResult) {write-error "Could not remove SSH Session $($SSHSession.sessionid):$($SSHSession.Host)."}
+    Remove-SSHSession -SSHSession $SSHSession -OutVariable $SSHSessionRemoveResult;
+
+    if (-Not $SSHSessionRemoveResult)
+    {
+        Write-Error "Could not remove SSH Session $($SSHSession.SessionId):$($SSHSession.Host).";
+    }
 }
 
 # .ExternalHelp Posh-Cisco.psm1-Help.xml
