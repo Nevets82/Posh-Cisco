@@ -284,62 +284,101 @@ function Get-CiscoVlan
     return (Get-CiscoSSHResponse -HostAddress $HostAddress -HostPort $HostPort -Credential $Credential -AcceptKey:$AcceptKey -Command 'show vlan' -StripHeaderAt 'VLAN ');
 }
 
+# .ExternalHelp Posh-Cisco.psm1-Help.xml
 function Get-CiscoBridgeDomain
 {
     [OutputType([String])]
     param
     (
-		[Parameter(Mandatory=$true)]
-		[String]$HostAddress,
-		[Parameter(Mandatory=$false)]
-		[Int]$HostPort = 22,
-		[Parameter(Mandatory=$true)]
-		[PSCredential]$Credential,
-		[Parameter(Mandatory=$false)]
-		[Switch]$AcceptKey,
-		[Parameter(Mandatory=$false)]
-		[Int]$BridgeDomain
-		
+        [Parameter(Mandatory=$true)]
+        [String]$HostAddress,
+        [Parameter(Mandatory=$false)]
+        [Int]$HostPort = 22,
+        [Parameter(Mandatory=$true)]
+        [PSCredential]$Credential,
+        [Parameter(Mandatory=$false)]
+        [Switch]$AcceptKey,
+        [Parameter(Mandatory=$false)]
+        [Int]$BridgeDomain,
+        [Parameter(Mandatory=$false)]
+        [String]$BridgeDomainName
     )
 
-	# Base command if no optional parameters present
-	$command = 'show bridge-domain'
+    # Base command if no optional parameters are present
+    $Command = 'show bridge-domain';
 	
-	# Add specific bridge-domain id if present
-	if ($PSBoundParameters.ContainsKey('BridgeDomain'))
-	{
-		$command += " $BridgeDomain"
-	}
+    # Add specific bridge-domain id if present
+    if ($PSBoundParameters.ContainsKey('BridgeDomain'))
+    {
+        $Command += " $BridgeDomain";
+    }
+    # Add specific bridge-domain name if present
+    elseif ($PSBoundParameters.ContainsKey('BridgeDomainName'))
+    {
+        $Command += " $BridgeDomainName";
+    }
 	
-    return (Get-CiscoSSHResponse -HostAddress $HostAddress -HostPort $HostPort -Credential $Credential -AcceptKey:$AcceptKey -Command $command -StripHeaderAt 'Bridge-domain ');
+    return (Get-CiscoSSHResponse -HostAddress $HostAddress -HostPort $HostPort -Credential $Credential -AcceptKey:$AcceptKey -Command $Command -StripHeaderAt 'Bridge-domain ');
 }
 
+# .ExternalHelp Posh-Cisco.psm1-Help.xml
 function Get-CiscoArp
 {
     [OutputType([String])]
     param
     (
-		[Parameter(Mandatory=$true)]
-		[String]$HostAddress,
-		[Parameter(Mandatory=$false)]
-		[Int]$HostPort = 22,
-		[Parameter(Mandatory=$true)]
-		[PSCredential]$Credential,
-		[Parameter(Mandatory=$false)]
-		[Switch]$AcceptKey,
-		[Parameter(Mandatory=$false)]
-		[String]$vrf
-		
+        [Parameter(Mandatory=$true)]
+        [String]$HostAddress,
+        [Parameter(Mandatory=$false)]
+        [Int]$HostPort = 22,
+        [Parameter(Mandatory=$true)]
+        [PSCredential]$Credential,
+        [Parameter(Mandatory=$false)]
+        [Switch]$AcceptKey,
+        [Parameter(Mandatory=$false)]
+        [String]$VRF
     )
 
-	# Base command if no optional parameters present
-	$command = 'show ip arp'
+    # Base command if no optional parameters are present
+    $Command = 'show arp';
 	
-	# Add specific VRF if present
-	if ($PSBoundParameters.ContainsKey('vrf'))
-	{
-		$command += " vrf $vrf"
-	}
+    # Add specific VRF if present
+    if ($PSBoundParameters.ContainsKey('VRF'))
+    {
+        $Command += " vrf $VRF";
+    }
 	
-    return (Get-CiscoSSHResponse -HostAddress $HostAddress -HostPort $HostPort -Credential $Credential -AcceptKey:$AcceptKey -Command $command -StripHeaderAt 'Protocol ');
+    # Get and return SSH response
+    return (Get-CiscoSSHResponse -HostAddress $HostAddress -HostPort $HostPort -Credential $Credential -AcceptKey:$AcceptKey -Command $Command -StripHeaderAt 'Protocol ');
+}
+
+# .ExternalHelp Posh-Cisco.psm1-Help.xml
+function Get-CiscoIpArp
+{
+    [OutputType([String])]
+    param
+    (
+        [Parameter(Mandatory=$true)]
+        [String]$HostAddress,
+        [Parameter(Mandatory=$false)]
+        [Int]$HostPort = 22,
+        [Parameter(Mandatory=$true)]
+        [PSCredential]$Credential,
+        [Parameter(Mandatory=$false)]
+        [Switch]$AcceptKey,
+        [Parameter(Mandatory=$false)]
+        [String]$VRF
+    )
+
+    # Base command if no optional parameters are present
+    $Command = 'show ip arp';
+	
+    # Add specific VRF if present
+    if ($PSBoundParameters.ContainsKey('VRF'))
+    {
+        $Command += " vrf $VRF";
+    }
+	
+    # Get and return SSH response
+    return (Get-CiscoSSHResponse -HostAddress $HostAddress -HostPort $HostPort -Credential $Credential -AcceptKey:$AcceptKey -Command $Command -StripHeaderAt 'Protocol ');
 }

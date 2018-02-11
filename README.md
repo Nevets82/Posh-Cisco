@@ -41,6 +41,9 @@ PS> Install-Module -Name Posh-Cisco
 * Get-CiscoStartupConfig: Gets the startup configuration.
 * Get-CiscoVersion: Gets the version information.
 * Get-CiscoVlan: Gets the vlan information.
+* Get-CiscoBridgeDomain: Gets the Bridge-Domain information.
+* Get-CiscoArp: Gets the ARP table.
+* Get-CiscoIpArp: Gets the IP ARP table.
 
 ## Usage
 
@@ -189,11 +192,12 @@ PS> Get-CiscoBridgeDomain -HostAddress "192.168.1.1" -HostPort 22 -Credential (G
 Advanced Options:
 
 * Specify the ```-AcceptKey``` flag to automatically accept SSH key.
-* Specify the ```-BridgeDomain <ID>``` parameter to only return information about a specific bridge domain.
+* Specify the ```-BridgeDomain <ID>``` parameter to return information about the bridge domain with the specified bridge domain id.
+* Specify the ```-BridgeDomainName <Name>``` parameter to return information about the bridge domain with the specified bridge domain name.
 
-### Get ARP table Information
+### Get ARP Table
 
-This PowerShell command gets the ARP table information.
+This PowerShell command gets the ARP table.
 
 ```PowerShell
 PS> Get-CiscoArp -HostAddress "192.168.1.1" -HostPort 22 -Credential (Get-Credential)
@@ -202,7 +206,20 @@ PS> Get-CiscoArp -HostAddress "192.168.1.1" -HostPort 22 -Credential (Get-Creden
 Advanced Options:
 
 * Specify the ```-AcceptKey``` flag to automatically accept SSH key.
-* Specify the ```-vrf <VRF name>``` parameter to return ARP table of a specific bridge VRF.
+* Specify the ```-VRF <VRF-name>``` parameter to return the ARP table for the VRF with the specified VRF-name.
+
+### Get IP ARP Table
+
+This PowerShell command gets the IP ARP table.
+
+```PowerShell
+PS> Get-CiscoIpArp -HostAddress "192.168.1.1" -HostPort 22 -Credential (Get-Credential)
+```
+
+Advanced Options:
+
+* Specify the ```-AcceptKey``` flag to automatically accept SSH key.
+* Specify the ```-VRF <VRF name>``` parameter to return the IP ARP table for the VRF with the specified VRF name.
 
 ## Security Considerations
 
@@ -229,6 +246,14 @@ These PowerShell functions were tested on the following Cisco devices:
 * WS-C3850-24S (SW version: 03.06.05E)
 
 ## Change Log
+
+### Version 1.0.3
+
+#### New Features
+
+* Added support to get bridge domain information (Get-CiscoBridgeDomain)
+* Added support to get ARP table. (Get-CiscoArp)
+* Added support to get IP ARP table. (Get-CiscoIpArp)
 
 ### Version 1.0.2
 
