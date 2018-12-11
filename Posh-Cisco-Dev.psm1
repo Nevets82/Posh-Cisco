@@ -394,3 +394,112 @@ function Get-CiscoIpArp
     # Get and return SSH response
     return (Get-CiscoSSHResponse -HostAddress $HostAddress -HostPort $HostPort -Credential $Credential -AcceptKey:$AcceptKey -Command $Command -StripHeaderAt 'Protocol ');
 }
+
+# .ExternalHelp Posh-Cisco.psm1-Help.xml
+function Get-CiscoCdp
+{
+    [OutputType([String])]
+    param
+    (
+        [Parameter(Mandatory=$true)]
+        [String]$HostAddress,
+        [Parameter(Mandatory=$false)]
+        [Int]$HostPort = 22,
+        [Parameter(Mandatory=$true)]
+        [PSCredential]$Credential,
+        [Parameter(Mandatory=$false)]
+        [Switch]$AcceptKey,
+        [Parameter(Mandatory=$false)]
+        [Int]$VLAN
+    )
+
+    # Base command if no optional parameters are present
+    $Command = 'show cdp';
+	
+    # Add specific VLAN if present
+    if ($PSBoundParameters.ContainsKey('VLAN'))
+    {
+        $Command += " vlan $VLAN";
+    }
+	
+    # Get and return SSH response
+    return (Get-CiscoSSHResponse -HostAddress $HostAddress -HostPort $HostPort -Credential $Credential -AcceptKey:$AcceptKey -Command $Command);
+}
+
+# .ExternalHelp Posh-Cisco.psm1-Help.xml
+function Get-CiscoCdpNeighbors
+{
+    [OutputType([String])]
+    [CmdletBinding(DefaultParametersetName='None')] 
+    param
+    (
+        [Parameter(Mandatory=$true)]
+        [String]$HostAddress,
+        [Parameter(Mandatory=$false)]
+        [Int]$HostPort = 22,
+        [Parameter(Mandatory=$true)]
+        [PSCredential]$Credential,
+        [Parameter(Mandatory=$false)]
+        [Switch]$AcceptKey,
+        [Parameter(ParameterSetName='interface',Mandatory=$false)]
+        [Switch]$Interface,      
+        [Parameter(ParameterSetName='interface',Mandatory=$true)]
+        [String]$InterfaceType,
+        [Parameter(ParameterSetName='interface',Mandatory=$true)]
+        [Int]$InterfaceNumber,
+        [Parameter(Mandatory=$false)]
+        [Switch]$Detail
+    )
+
+    # Base command if no optional parameters are present
+    $Command = 'show cdp neighbors';
+	
+    # Add specific interface if present    
+    if ($PSBoundParameters.ContainsKey('Interface'))
+    {
+        $Command += " $InterfaceType $InterfaceNumber";
+    }
+
+    if ($PSBoundParameters.ContainsKey('Detail'))
+    {
+        $Command += " $Detail";
+    }
+	
+    # Get and return SSH response
+    return (Get-CiscoSSHResponse -HostAddress $HostAddress -HostPort $HostPort -Credential $Credential -AcceptKey:$AcceptKey -Command $Command);
+}
+
+function Get-CiscoCdpInterface
+{
+    [OutputType([String])]
+    [CmdletBinding(DefaultParametersetName='None')] 
+    param
+    (
+        [Parameter(Mandatory=$true)]
+        [String]$HostAddress,
+        [Parameter(Mandatory=$false)]
+        [Int]$HostPort = 22,
+        [Parameter(Mandatory=$true)]
+        [PSCredential]$Credential,
+        [Parameter(Mandatory=$false)]
+        [Switch]$AcceptKey,
+        [Parameter(ParameterSetName='interface',Mandatory=$false)]
+        [Switch]$Interface,      
+        [Parameter(ParameterSetName='interface',Mandatory=$true)]
+        [String]$InterfaceType,
+        [Parameter(ParameterSetName='interface',Mandatory=$true)]
+        [Int]$InterfaceNumber
+    )     
+
+    # Base command if no optional parameters are present
+    $Command = 'show cdp interface';
+	
+    # Add specific interface if present    
+    if ($PSBoundParameters.ContainsKey('Interface'))
+    {
+        $Command += " $InterfaceType $InterfaceNumber";
+    }
+	
+    # Get and return SSH response
+    return (Get-CiscoSSHResponse -HostAddress $HostAddress -HostPort $HostPort -Credential $Credential -AcceptKey:$AcceptKey -Command $Command);
+}
