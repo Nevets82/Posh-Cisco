@@ -223,7 +223,7 @@ Advanced Options:
 
 ### Get CDP Informations
 
-This PowerShell command gets the CDP information.
+This PowerShell command gets the CDP informations.
 
 ```PowerShell
 PS> Get-CiscoCdp -HostAddress "192.168.1.1" -HostPort 22 -Credential (Get-Credential)
@@ -235,7 +235,7 @@ Advanced Options:
 
 ### Get CDP Neighbors
 
-This PowerShell command gets the CDP neighbors information.
+This PowerShell command gets the CDP neighbors informations.
 
 ```PowerShell
 PS> Get-CiscoCdpNeighbors -HostAddress "192.168.1.1" -HostPort 22 -Credential (Get-Credential)
@@ -244,12 +244,12 @@ PS> Get-CiscoCdpNeighbors -HostAddress "192.168.1.1" -HostPort 22 -Credential (G
 Advanced Options:
 
 * Specify the ```-AcceptKey``` flag to automatically accept SSH key.
-* Specify the ```-Interface -InterfaceType <type> -InterfaceNumber <number>``` parameter to return information of the neighbor on the interface you want.
+* Specify the ```-Interface <interface type> <interface number>``` parameter to return information of the neighbor on a specific interface you want.
 * Specify the ```-Detail``` parameter to return detailed information about a neighbor (or neighbors).
 
 ### Get CDP Interface Informations
 
-This PowerShell command gets the CDP information about the interfaces on which CDP is enabled.
+This PowerShell command gets the CDP informations about the interfaces on which CDP is enabled.
 
 ```PowerShell
 PS> Get-CiscoCdpInterface -HostAddress "192.168.1.1" -HostPort 22 -Credential (Get-Credential)
@@ -258,7 +258,7 @@ PS> Get-CiscoCdpInterface -HostAddress "192.168.1.1" -HostPort 22 -Credential (G
 Advanced Options:
 
 * Specify the ```-AcceptKey``` flag to automatically accept SSH key.
-* Specify the ```-Interface -InterfaceType <type> -InterfaceNumber <number>``` parameter to return information about the interface you want.
+* Specify the ```-Interface <interface type> <interface number>``` parameter to return information on a specific interface you want.
 
 ## Security Considerations
 

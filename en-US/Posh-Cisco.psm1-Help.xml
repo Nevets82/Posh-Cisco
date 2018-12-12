@@ -2407,9 +2407,9 @@
 				</dev:remarks>
 			</command:example>		
 		</command:examples>
-
-	</command:command>
-		<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+	</command:command>	
+	
+	<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
 		<!-- Command-->
 		<command:details>
 			<command:name>Get-CiscoCdpNeighbors</command:name>
@@ -2458,39 +2458,14 @@
 					</maml:description>
 					<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 					<dev:defaultValue/>
-				</command:parameter>
+				</command:parameter>	
 				<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
 					<maml:name>Interface</maml:name>
 					<maml:description>
-						<maml:para>Determines whether a special port is specified.</maml:para>
-					</maml:description>
-					<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-					<dev:defaultValue/>
-				</command:parameter>	
-				<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
-					<maml:name>InterfaceType</maml:name>
-					<maml:description>
-						<maml:para>Specifies the InterfaceType.</maml:para>
+						<maml:para>Specifies a interface.</maml:para>
 					</maml:description>
 					<command:parameterValue required="false" variableLength="false">String</command:parameterValue>
-					<dev:defaultValue/>
-				</command:parameter>
-				<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
-					<maml:name>InterfaceNumber</maml:name>
-					<maml:description>
-						<maml:para>Specifies the InterfaceNumber.</maml:para>
-					</maml:description>
-					<command:parameterValue required="false" variableLength="false">Int32</command:parameterValue>
-					<dev:defaultValue/>
-				</command:parameter>
-				<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
-					<maml:name>Detail</maml:name>
-					<maml:description>
-						<maml:para>Parameter for detailed information.</maml:para>
-					</maml:description>
-					<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-					</dev:defaultValue>
-				</command:parameter>
+				</command:parameter>				
 			</command:syntaxItem>
 		</command:syntax>
 		<command:parameters>
@@ -2544,46 +2519,13 @@
 				<dev:defaultValue/>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
-				<maml:name>Interface</maml:name>
-				<maml:description>
-					<maml:para>Determines whether a special port is specified.</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-				<dev:type>
-					<maml:name>SwitchParameter</maml:name>
-					<maml:uri/>
-				</dev:type>
-			</command:parameter>	
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
-					<maml:name>InterfaceType</maml:name>
+					<maml:name>Interface</maml:name>
 					<maml:description>
-						<maml:para>Specifies the InterfaceType.</maml:para>
+						<maml:para>Specifies a interface.</maml:para>
 					</maml:description>
 					<command:parameterValue required="false" variableLength="false">String</command:parameterValue>
 					<dev:type>
 						<maml:name>String</maml:name>
-						<maml:uri/>
-					</dev:type>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
-				<maml:name>InterfaceNumber</maml:name>
-				<maml:description>
-					<maml:para>Specifies the InterfaceNumber.</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">Int32</command:parameterValue>
-					<dev:type>
-						<maml:name>Int32</maml:name>
-						<maml:uri/>
-					</dev:type>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
-					<maml:name>Detail</maml:name>
-					<maml:description>
-						<maml:para>Parameter for detailed information.</maml:para>
-					</maml:description>
-					<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-					<dev:type>
-						<maml:name>SwitchParameter</maml:name>
 						<maml:uri/>
 					</dev:type>
 			</command:parameter>
@@ -2607,7 +2549,7 @@
 				<maml:introduction>
 					<maml:para>PS C:\&gt;</maml:para>
 				</maml:introduction>
-				<dev:code>Get-CiscoCdpNeighbors -HostAddress &quot;192.168.1.1&quot; -Credential (Get-Credential)</dev:code>
+				<dev:code>Get-CiscoCdpNeighbors -HostAddress &quot;192.168.1.1&quot; -Credential (Get-Credential) -AcceptKey</dev:code>
 				<dev:remarks>
 					<maml:para>
 					</maml:para>
@@ -2625,29 +2567,28 @@
 				</dev:remarks>
 			</command:example>		
 		</command:examples>
-	</command:command>
-	</command:command>
-		<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+	</command:command>	
+	<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
 		<!-- Command-->
 		<command:details>
 			<command:name>Get-CiscoCdpInterface</command:name>
 			<maml:description>
-				<maml:para>Gets the Cisco device CDP informations about a specific interface (or interfaces).</maml:para>
+				<maml:para>Gets the Cisco device CDP informations about the interfaces (or a specific interface).</maml:para>
 			</maml:description>
 			<maml:copyright>
 				<maml:para/>
 			</maml:copyright>
 			<command:verb>Get</command:verb>
-			<command:noun>CiscoCdpNeighbors</command:noun>
+			<command:noun>CiscoCdpInterface</command:noun>
 			<dev:version/>
 		</command:details>
 		<maml:description>
-			<maml:para>Gets the Cisco device CDP informations about a specific interface (or interfaces).</maml:para>
+			<maml:para>Gets the Cisco device CDP informations about the interfaces (or a specific interface).</maml:para>
 		</maml:description>
 		<command:syntax>
 			<!-- Parameter Sets-->
 			<command:syntaxItem>
-				<maml:name>Get-CiscoCdpNeighbors</maml:name>
+				<maml:name>Get-CiscoCdpInterface</maml:name>
 				<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
 					<maml:name>HostAddress</maml:name>
 					<maml:description>
@@ -2676,31 +2617,7 @@
 					</maml:description>
 					<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 					<dev:defaultValue/>
-				</command:parameter>
-				<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
-					<maml:name>Interface</maml:name>
-					<maml:description>
-						<maml:para>Determines whether a special port is specified.</maml:para>
-					</maml:description>
-					<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-					<dev:defaultValue/>
-				</command:parameter>	
-				<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
-					<maml:name>InterfaceType</maml:name>
-					<maml:description>
-						<maml:para>Specifies the InterfaceType.</maml:para>
-					</maml:description>
-					<command:parameterValue required="false" variableLength="false">String</command:parameterValue>
-					<dev:defaultValue/>
-				</command:parameter>
-				<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
-					<maml:name>InterfaceNumber</maml:name>
-					<maml:description>
-						<maml:para>Specifies the InterfaceNumber.</maml:para>
-					</maml:description>
-					<command:parameterValue required="false" variableLength="false">Int32</command:parameterValue>
-					<dev:defaultValue/>
-				</command:parameter>
+				</command:parameter>				
 			</command:syntaxItem>
 		</command:syntax>
 		<command:parameters>
@@ -2753,39 +2670,6 @@
 				</dev:type>
 				<dev:defaultValue/>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
-				<maml:name>Interface</maml:name>
-				<maml:description>
-					<maml:para>Determines whether a special port is specified.</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-				<dev:type>
-					<maml:name>SwitchParameter</maml:name>
-					<maml:uri/>
-				</dev:type>
-			</command:parameter>	
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
-					<maml:name>InterfaceType</maml:name>
-					<maml:description>
-						<maml:para>Specifies the InterfaceType.</maml:para>
-					</maml:description>
-					<command:parameterValue required="false" variableLength="false">String</command:parameterValue>
-					<dev:type>
-						<maml:name>String</maml:name>
-						<maml:uri/>
-					</dev:type>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
-				<maml:name>InterfaceNumber</maml:name>
-				<maml:description>
-					<maml:para>Specifies the InterfaceNumber.</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">Int32</command:parameterValue>
-					<dev:type>
-						<maml:name>Int32</maml:name>
-						<maml:uri/>
-					</dev:type>
-			</command:parameter>
 		</command:parameters>
 		<command:returnValues>
 			<!-- Outputs-->
@@ -2806,7 +2690,7 @@
 				<maml:introduction>
 					<maml:para>PS C:\&gt;</maml:para>
 				</maml:introduction>
-				<dev:code>Get-CiscoCdpNeighbors -HostAddress &quot;192.168.1.1&quot; -Credential (Get-Credential)</dev:code>
+				<dev:code>Get-CiscoCdpInterface -HostAddress &quot;192.168.1.1&quot; -Credential (Get-Credential)</dev:code>
 				<dev:remarks>
 					<maml:para>
 					</maml:para>
@@ -2817,7 +2701,7 @@
 				<maml:introduction>
 					<maml:para>PS C:\&gt;</maml:para>
 				</maml:introduction>
-				<dev:code>Get-CiscoCdpNeighbors -HostAddress &quot;192.168.1.1&quot; -HostPort 22 -Credential (Get-Credential) -AcceptKey -Interface -InterfaceType vlan -InterfaceNumber 10</dev:code>
+				<dev:code>Get-CiscoCdpInterface -HostAddress &quot;192.168.1.1&quot; -HostPort 22 -Credential (Get-Credential) -AcceptKey -Interface "GigabitEthernet 1/0/1"</dev:code>
 				<dev:remarks>
 					<maml:para>
 					</maml:para>
