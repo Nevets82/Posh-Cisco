@@ -221,6 +221,45 @@ Advanced Options:
 * Specify the ```-AcceptKey``` flag to automatically accept SSH key.
 * Specify the ```-VRF <VRF name>``` parameter to return the IP ARP table for the VRF with the specified VRF name.
 
+### Get CDP Informations
+
+This PowerShell command gets the CDP informations.
+
+```PowerShell
+PS> Get-CiscoCdp -HostAddress "192.168.1.1" -HostPort 22 -Credential (Get-Credential)
+```
+
+Advanced Options:
+
+* Specify the ```-AcceptKey``` flag to automatically accept SSH key.
+
+### Get CDP Neighbors
+
+This PowerShell command gets the CDP neighbors informations.
+
+```PowerShell
+PS> Get-CiscoCdpNeighbors -HostAddress "192.168.1.1" -HostPort 22 -Credential (Get-Credential)
+```
+
+Advanced Options:
+
+* Specify the ```-AcceptKey``` flag to automatically accept SSH key.
+* Specify the ```-Interface <interface type> <interface number>``` parameter to return information of the neighbor on a specific interface you want.
+* Specify the ```-Detail``` parameter to return detailed information about a neighbor (or neighbors).
+
+### Get CDP Interface Informations
+
+This PowerShell command gets the CDP informations about the interfaces on which CDP is enabled.
+
+```PowerShell
+PS> Get-CiscoCdpInterface -HostAddress "192.168.1.1" -HostPort 22 -Credential (Get-Credential)
+```
+
+Advanced Options:
+
+* Specify the ```-AcceptKey``` flag to automatically accept SSH key.
+* Specify the ```-Interface <interface type> <interface number>``` parameter to return information on a specific interface you want.
+
 ## Security Considerations
 
 Before you create scripts that use this module, you should create a readonly user with the necessary rights to be used for the PSCredentials.
@@ -246,6 +285,14 @@ These PowerShell functions were tested on the following Cisco devices:
 * WS-C3850-24S (SW version: 03.06.05E)
 
 ## Change Log
+
+### Version 1.0.4
+
+#### New Features
+
+* Added support to get CDP informations (Get-CiscoCdp)
+* Added support to get CDP neighbors information. (Get-CiscoCdpNeighbors)
+* Added support to get CDP interface informations. (Get-CiscoCdpInterface)
 
 ### Version 1.0.3
 
